@@ -1,0 +1,8 @@
+activity_labels <- read.table("./activity_labels.txt")
+features <- read.table("./features.txt")
+subject_test <- read.table("./subject_test.txt")
+subject_train <- read.table("./subject_train.txt")
+X_test <- read.table("./X_test.txt")
+y_test <- read.table("./y_test.txt")
+X_train <- read.table("./X_train.txt")
+y_train <- read.table("./y_train.txt")
