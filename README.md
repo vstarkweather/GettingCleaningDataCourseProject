@@ -4,7 +4,8 @@ output: html_document
 README: GettingCleaningDataCourseProject
 ================================
 
-1, This file contains an overview of the raw data files, and the process followed in the **run_analysis.R** code to clean the data and prepare it as a tidy data set. A description of the resulting tidy data set is provided.
+1. This file contains an overview of the raw data files, and the process followed in the **run_analysis.R** code to clean the data and prepare it as a tidy data set. A description of the resulting tidy data set is provided.
+The file was prepared using RStudio version 0.98.1087 and R version 3.1.2 "Pumpkin Helmet".
 
 ## Raw Data Description
 2. The raw data files were downloaded from this URL:
@@ -43,9 +44,9 @@ to the R working directory.
 + Columns from the *y-* and *Subject_* data frames are copied to the respective *X_* data frames, and are coerced to factor in the process.
 + With both *X_* data frames now given column names, the *X_test* and *X_train* data frames are combined via rbind() and the resulting data frame is called *X_combined*.
 + The columns in the data frame *activity_labels* are given names and converted to factors. 
-+ The data frames *activity_labels* and *X_combined* are joined based on the key column activityclass found in each data frame. This pulls the column of activity names into the *X_combined* data frame. 
++ The data frames *activity_labels* and *X_combined* are joined based on the key column **activityclass** found in each data frame. This pulls the column of activity names into the *X_combined* data frame. 
 + A new data frame is created by using the select() function along with regular expressions and metacharacters to capture only the columns with names matching the required criteria: containing **.mean..**, **.std..**, **subject**, or **activity**. This single command created a 68-column data frame called *X_fixed*.
 + *X_fixed* does not meet the tidy data requirement of one column per variable. There are 66 columns that have column names that are values, and should be in a variable called **feature**. The gather() function is used to create a "tall and skinny" data frame called *X_tidy* that brings these values into a single column. The corresponding numeric values in the 66 columns are brought into a column called **measurement** using the same command. The columns **subject** and **activity** are kept as columns of factors for the next step.
 + Using the dplyr functions group by() and summarize each(), the data are grouped by **subject**, **activity**, and **feature**, and then means are calculated for each combination of subject, activity, and feature. This results in a "tall and skinny" data frame called *X_final*.
 + Columns in *X_final" are coerced back into classes that are suitable for sorting, and the arrange() function is called to put the entire data frame in order first by subject, then activity, then feature.
-+ Finally, a file **HARUStidy.txt** is written to the R working directory.
++ Finally, a file **HARUStudy.txt** is written to the R working directory.
